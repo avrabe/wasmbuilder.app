@@ -1,4 +1,4 @@
-package wasmbuilder-app:graph
+package component:graph
 
 world graph {
     // TODO: once jsct supports type world items, remove the interface export

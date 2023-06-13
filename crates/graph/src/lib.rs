@@ -4,7 +4,7 @@ cargo_component_bindings::generate!({
 
 use anyhow::Result;
 use bindings::exports::graph::{
-    Component, ComponentId, EncodeOptions, Export, Guest as Graph, Import, InstanceId, ItemKind,
+    Component, ComponentId, EncodeOptions, Export, Graph, Import, InstanceId, ItemKind,
 };
 use once_cell::sync::Lazy;
 use std::sync::Mutex;
@@ -74,6 +74,7 @@ impl Graph for GraphComponent {
                 .collect(),
             exports: component
                 .exports()
+                
                 .map(|(_, name, kind, _)| Export {
                     name: name.to_string(),
                     kind: match kind {
