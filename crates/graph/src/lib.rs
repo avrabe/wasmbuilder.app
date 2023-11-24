@@ -1,11 +1,9 @@
-cargo_component_bindings::generate!({
-    implementor: GraphComponent,
-});
+cargo_component_bindings::generate!();
 
-use anyhow::Result;
-use bindings::exports::graph::{
-    Component, ComponentId, EncodeOptions, Export, Graph, Import, InstanceId, ItemKind,
+use crate::bindings::exports::graph::{
+    Component, ComponentId, EncodeOptions, Export, Guest, Import, InstanceId, ItemKind,
 };
+use anyhow::Result;
 use once_cell::sync::Lazy;
 use std::sync::Mutex;
 use wasm_compose::graph::CompositionGraph;
@@ -14,10 +12,11 @@ use wit_component::WitPrinter;
 
 static GRAPH: Lazy<Mutex<CompositionGraph>> = Lazy::new(Default::default);
 
-struct GraphComponent;
-
-impl Graph for GraphComponent {
-    fn add_component(name: String, bytes: Vec<u8>) -> Result<Component, String> {
+impl Guest for Component {
+    fn add_component(
+        name: ::cargo_component_bindings::rt::string::String,
+        bytes: ::cargo_component_bindings::rt::vec::Vec<u8>,
+    ) -> Result<Component, ::cargo_component_bindings::rt::string::String> {
         let component = wasm_compose::graph::Component::from_bytes(name, bytes)
             .map_err(|e| format!("{e:#}"))?;
 
@@ -74,7 +73,6 @@ impl Graph for GraphComponent {
                 .collect(),
             exports: component
                 .exports()
-                
                 .map(|(_, name, kind, _)| Export {
                     name: name.to_string(),
                     kind: match kind {
