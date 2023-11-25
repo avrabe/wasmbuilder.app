@@ -15,12 +15,18 @@ To build this project, the following tools must be installed locally:
 - [Yarn](https://yarnpkg.com/getting-started/install)
 - [Make](https://www.gnu.org/software/make/)
 
+optional (when bundling everything or running with spin):
+
+- [wasm-opt](https://github.com/WebAssembly/binaryen/releases)
+- [wasm-strip](https://github.com/WebAssembly/wabt)
+- [spin](https://developer.fermyon.com/spin/v2/install)
+
 ### Setup
 
 To install the dependencies of the project, run the following command:
 
 ```sh
-$ make setup
+make setup
 ```
 
 This will also install the `cargo component` command line tools (if not
@@ -31,7 +37,13 @@ already installed).
 To run the application locally, run the following command:
 
 ```sh
-$ make run
+make run
+```
+
+or
+
+```sh
+make spin
 ```
 
 By default, the application runs on port 3000. Open a Web browser and navigate
