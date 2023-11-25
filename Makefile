@@ -38,4 +38,4 @@ setup: ## installs build dependencies
 	@$(CARGO) install --git https://github.com/bytecodealliance/cargo-component --locked cargo-component
 
 spin: bundle ## spins up a local server
-	@$(SPIN) up -f spin/spin.toml
+	@$(SPIN) up -f crates/site/spin.toml
