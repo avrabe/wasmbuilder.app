@@ -15,7 +15,7 @@ Prism.languages["wit"] = {
   },
   keyword: {
     pattern:
-      /(^|\s)(use|type|func|u8|u16|u32|u64|s8|s16|s32|s64|float32|float64|char|record|flags|variant|enum|union|bool|string|option|result|future|stream|list|_|as|from|static|interface|tuple|implements|import|export|world|default)\b/,
+      /(^|\s)(use|type|func|u8|u16|u32|u64|s8|s16|s32|s64|float32|float64|char|record|flags|variant|enum|union|bool|string|option|result|resource|future|stream|list|_|as|from|static|interface|tuple|implements|import|export|world|default)\b/,
   },
   identifier: {
     // TODO: support unicode identifiers

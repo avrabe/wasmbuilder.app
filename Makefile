@@ -4,6 +4,7 @@ NPX := npx
 ENTRY_POINT := src/index.html
 WASM_OPT := wasm-opt
 WASM_STRIP := wasm-strip
+SPIN := spin
 
 help:
 	@grep -E '^[a-zA-Z\._-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -35,3 +36,6 @@ run: bindgen ## runs development
 setup: ## installs build dependencies
 	@$(YARN)
 	@$(CARGO) install --git https://github.com/bytecodealliance/cargo-component --locked cargo-component
+
+spin: bundle ## spins up a local server
+	@$(SPIN) up -f spin/spin.toml
