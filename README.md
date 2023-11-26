@@ -1,5 +1,7 @@
 # WebAssembly Component Builder
 
+[![Build](https://github.com/avrabe/wasmbuilder.app/actions/workflows/build.yml/badge.svg?branch=wip)](https://github.com/avrabe/wasmbuilder.app/actions/workflows/build.yml)
+
 ## Overview
 
 This project is a simple GUI tool for building [WebAssembly components](https://github.com/WebAssembly/component-model)
