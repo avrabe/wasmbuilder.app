@@ -10,3 +10,5 @@ src/graph.d.ts
 src/graph.js
 src/exports/
 .DS_Store
+sqlite_db.db
+logs/

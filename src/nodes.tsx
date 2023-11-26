@@ -38,7 +38,7 @@ const InstanceNode = ({ data, selected }: InstanceNodeProps) => {
                 />
               </div>
             </div>
-            <div className="w-4/5">{data.component.name}</div>
+            <div className="w-4/5">{data.component.name} {data.component.components}</div>
             <div className="w-1/5">
               <Handle
                 type="source"

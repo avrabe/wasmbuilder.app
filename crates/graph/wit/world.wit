@@ -39,6 +39,8 @@ world graph {
         record component {
             /// The id of the component in the graph/
             id: component-id,
+            /// The number of all the components ever loaded.
+            components: component-id,
             /// The name of the component.
             name: string,
             /// The imports of the component.

@@ -91,18 +91,35 @@ export const AddComponentDialog = ({
     if (!file) {
       fileError = "WebAssembly component required";
     }
-
+    console.log("1")
     setNameError(nameError);
     setFileError(fileError);
     if (nameError || fileError) {
       return;
     }
+    
+
+    const response = await  fetch('/v1/statistics/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    // Await for the response to be parsed as JSON
+    const data = await response.json();
+    const components = data.components;
+
+    // Use the data as a Person object
+    console.log(components); // Luke Skywalker
+
 
     const bytes = new Uint8Array(await file.arrayBuffer());
     try {
       const component = graph.addComponent(name, bytes) as Component;
       component.color = selectedColor;
       component.description = description;
+      component.components = components;
+      console.log(component);
       onClose(component);
     } catch (e) {
       setFileError(e.payload);

@@ -5,6 +5,7 @@ ENTRY_POINT := src/index.html
 WASM_OPT := wasm-opt
 WASM_STRIP := wasm-strip
 SPIN := spin
+DIESEL := diesel
 
 help:
 	@grep -E '^[a-zA-Z\._-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -36,6 +37,12 @@ run: bindgen ## runs development
 setup: ## installs build dependencies
 	@$(YARN)
 	@$(CARGO) install --git https://github.com/bytecodealliance/cargo-component --locked cargo-component
+	@$(DIESEL) setup
+	@$(DIESEL) migration redo
 
 spin: bundle ## spins up a local server
 	@$(SPIN) up -f crates/site/spin.toml
+
+deploy: bundle ## deploys the application
+	@$(SPIN) cloud execute @crates/site/statistics/migration/2023-11-26-140822_statistics/up.sql -a wasmbuilder
+	@$(SPIN) deploy -f crates/site/spin.toml

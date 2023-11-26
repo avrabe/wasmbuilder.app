@@ -56,6 +56,7 @@ impl Guest for Component {
 
         Ok(Component {
             id: id.0 as u32,
+            components: 0,
             name: component.name().to_string(),
             imports: component
                 .imports()

@@ -62,7 +62,7 @@ const ComponentListItem = ({
         <div className="min-w-0 flex-1 inline-flex items-center">
           <span className="absolute inset-0" aria-hidden="true" />
           <p className="truncate text-sm font-medium text-gray-900">
-            {component.name}
+            {component.name} {component.components}
           </p>
         </div>
       </div>
