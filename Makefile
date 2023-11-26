@@ -37,6 +37,7 @@ run: bindgen ## runs development
 setup: ## installs build dependencies
 	@$(YARN)
 	@$(CARGO) install --git https://github.com/bytecodealliance/cargo-component --locked cargo-component
+	@$(CARGO) install diesel_cli
 	@$(DIESEL) setup
 	@$(DIESEL) migration redo
 
@@ -44,5 +45,5 @@ spin: bundle ## spins up a local server
 	@$(SPIN) up -f crates/site/spin.toml
 
 deploy: bundle ## deploys the application
-	@$(SPIN) cloud execute @crates/site/statistics/migration/2023-11-26-140822_statistics/up.sql -a wasmbuilder
+	@$(SPIN) cloud sqlite execute @crates/site/statistics/migration/2023-11-26-140822_statistics/up.sql -a wasmbuilder -l default
 	@$(SPIN) deploy -f crates/site/spin.toml

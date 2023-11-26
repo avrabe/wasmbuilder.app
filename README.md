@@ -20,7 +20,6 @@ optional (when bundling everything or running with spin):
 - [wasm-opt](https://github.com/WebAssembly/binaryen/releases)
 - [wasm-strip](https://github.com/WebAssembly/wabt)
 - [spin](https://developer.fermyon.com/spin/v2/install)
-- [diesel](https://diesel.rs/guides/getting-started.html)
 
 ### Setup
 
